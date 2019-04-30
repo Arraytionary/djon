@@ -412,6 +412,11 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 185208943}
+    - target: {fileID: 3506199431550767064, guid: cb9440e5cba5529429e7744af895f63b,
+        type: 3}
+      propertyPath: isRunning
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3506199431479374116, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_LocalPosition.y
