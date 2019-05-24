@@ -26,7 +26,7 @@ public class weap : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && timeBtwShots<=0)
         {
-            Instantiate(projectile, shotPoint.position, transform.rotation);
+            Instantiate(projectile, shotPoint.position + transform.right * 1.2f, transform.rotation);
             timeBtwShots = startTimeBtwShots;
         }
         else
