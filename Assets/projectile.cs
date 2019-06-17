@@ -14,16 +14,18 @@ public class projectile : MonoBehaviour
     private void Start()
     {
         Invoke("DestroyProjectile", lifeTime);
+        Debug.Log(transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.forward, distance, whatIsSolid);
-        // if (hitInfo.collider){
-        //     Debug.Log(hitInfo.collider);
-        //     DestroyProjectile();
-        // }
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.forward, distance, whatIsSolid);
+        if (hitInfo.collider)
+        {
+            Debug.Log(hitInfo.collider);
+            DestroyProjectile();
+        }
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 

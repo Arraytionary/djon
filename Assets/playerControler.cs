@@ -10,6 +10,7 @@ public class playerControler : MonoBehaviour
     private float moveInput;
     public GameObject weapon;
     private Animator anim;
+    public float health;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class playerControler : MonoBehaviour
 
     void FixedUpdate()
     {
+        anim.SetBool("isAttacked", false);
         moveInput = Input.GetAxisRaw("Horizontal");
         if(moveInput == 1)
         {
@@ -44,6 +46,14 @@ public class playerControler : MonoBehaviour
         }
         velocity = moveInput * speed;
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+    }
+    public void TakeDamage(float damage)
+    {
+        anim.SetBool("isAttacked", true);
+        //anim.Play("take damage", 0);
+        health -= damage;
+
+        //anim.Rebind();
     }
 
 }
