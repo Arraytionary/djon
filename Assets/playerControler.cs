@@ -20,7 +20,7 @@ public class playerControler : MonoBehaviour
 
     void FixedUpdate()
     {
-        anim.SetBool("isAttacked", false);
+        // anim.SetBool("isAttacked", false);
         moveInput = Input.GetAxisRaw("Horizontal");
         if(moveInput == 1)
         {
@@ -49,9 +49,10 @@ public class playerControler : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        anim.SetBool("isAttacked", true);
+        anim.SetTrigger("isAttacked");
         //anim.Play("take damage", 0);
-        health -= damage;
+        GlobalStats.Instance.stats["health"] -= damage;
+        // health -= damage;
 
         //anim.Rebind();
     }

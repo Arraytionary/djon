@@ -14,7 +14,7 @@ public class WalkingEnemy : MonoBehaviour
 
     public Transform attackPos;
     public LayerMask whatIsEnemies;
-    public int damage;
+    public float damage;
 
     private float tBA;
     public float sTBA;
