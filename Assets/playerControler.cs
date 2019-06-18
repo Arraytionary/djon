@@ -57,4 +57,8 @@ public class playerControler : MonoBehaviour
         //anim.Rebind();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+    }
 }

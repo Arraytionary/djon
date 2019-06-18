@@ -19,6 +19,9 @@ public class WalkingEnemy : MonoBehaviour
     private float tBA;
     public float sTBA;
 
+    public float health;
+    public GameObject blood;
+
     void Start()
     {
         //anim = GetComponent<Animator>();
@@ -28,6 +31,7 @@ public class WalkingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //HeadExplode();
         //anim.SetBool("shouldAttack", false);
         if (Vector2.Distance(transform.position, player.position) > sightDistance)
         {
@@ -95,5 +99,21 @@ public class WalkingEnemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
        
+    }
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject, 0f);
+        }
+    }
+    public void HeadExplode()
+    {
+        GameObject head = gameObject.transform.Find("Enemy").gameObject.transform.Find("head").gameObject;
+        Vector3 headPos = head.transform.position;
+        //Destroy(head, 0f);
+        head.gameObject.SetActive(false);
+        Instantiate(blood, headPos, Quaternion.identity);
     }
 }

@@ -25,6 +25,18 @@ public class projectile : MonoBehaviour
         {
             Debug.Log(hitInfo.collider);
             DestroyProjectile();
+
+            if (hitInfo.collider.tag.Equals("Enemy"))
+            {
+
+                hitInfo.collider.GetComponentInParent<WalkingEnemy>().TakeDamage(0.2f);
+                
+
+            }
+            else if (hitInfo.collider.tag.Equals("Head"))
+            {
+                hitInfo.collider.GetComponentInParent<WalkingEnemy>().HeadExplode();
+            }
         }
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
