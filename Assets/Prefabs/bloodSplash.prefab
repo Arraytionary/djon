@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3118281074068223195}
   - component: {fileID: 3118281074068223194}
   - component: {fileID: 3118281074068223193}
-  m_Layer: 0
+  - component: {fileID: 1988327473375918683}
+  m_Layer: 9
   m_Name: bloodSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +47,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4819,3 +4820,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1988327473375918683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3118281074068223192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13c6440e107af844a4fe0a8377c4acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

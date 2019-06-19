@@ -21,6 +21,8 @@ public class WalkingEnemy : MonoBehaviour
 
     public float health;
     public GameObject blood;
+    public GameObject bodyBlood;
+    public GameObject destroyedEffect;
 
     void Start()
     {
@@ -100,12 +102,15 @@ public class WalkingEnemy : MonoBehaviour
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
        
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool headShot)
     {
+        Instantiate(bodyBlood, transform.position, Quaternion.identity);
         health -= damage;
         if(health <= 0)
         {
-            Destroy(gameObject, 0f);
+            if (headShot) HeadExplode();
+            StartCoroutine(Destroy(1.2f));
+            
         }
     }
     public void HeadExplode()
@@ -115,5 +120,12 @@ public class WalkingEnemy : MonoBehaviour
         //Destroy(head, 0f);
         head.gameObject.SetActive(false);
         Instantiate(blood, headPos, Quaternion.identity);
+    }
+
+    IEnumerator Destroy(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        Destroy(gameObject, 0f);
+        Instantiate(destroyedEffect, transform.position, Quaternion.identity);
     }
 }

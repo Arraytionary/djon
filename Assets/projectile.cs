@@ -29,13 +29,13 @@ public class projectile : MonoBehaviour
             if (hitInfo.collider.tag.Equals("Enemy"))
             {
 
-                hitInfo.collider.GetComponentInParent<WalkingEnemy>().TakeDamage(0.2f);
+                hitInfo.collider.GetComponentInParent<WalkingEnemy>().TakeDamage(0.2f, false);
                 
 
             }
             else if (hitInfo.collider.tag.Equals("Head"))
             {
-                hitInfo.collider.GetComponentInParent<WalkingEnemy>().HeadExplode();
+                hitInfo.collider.GetComponentInParent<WalkingEnemy>().TakeDamage(0.4f, true);
             }
         }
         transform.Translate(Vector2.right * speed * Time.deltaTime);
