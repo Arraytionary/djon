@@ -30,8 +30,11 @@ public class projectile : MonoBehaviour
             {
 
                 hitInfo.collider.GetComponentInParent<WalkingEnemy>().TakeDamage(0.2f, false);
-                
 
+            }
+            else if (hitInfo.collider.tag.Equals("FlyingEnemy"))
+            {
+                hitInfo.collider.GetComponentInParent<FlyingEnemy>().TakeDamage(0.2f, false);
             }
             else if (hitInfo.collider.tag.Equals("Head"))
             {

@@ -19,10 +19,12 @@ public class FlyingEnemy : MonoBehaviour
     private float tBA;
     public float sTBA;
 
-    // public float health;
+    public float retreatDistance;
+
+    public float health;
     // public GameObject blood;
-    // public GameObject bodyBlood;
-    // public GameObject destroyedEffect;
+    public GameObject bodyBlood;
+    public GameObject destroyedEffect;
 
     public GameObject fire;
     // Start is called before the first frame update
@@ -34,13 +36,21 @@ public class FlyingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Vector2.Distance(transform.position, player.position) > retreatDistance)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+        }
         
         // if (Vector2.Distance(transform.position, player.position) > sightDistance)
         // {
             // StartCoroutine(FlyUp());
             // anim.SetBool("isDetect", false);
             // anim.SetBool("shouldAttack", false);
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            //transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             // StopAllCoroutines();
         // }
         // else transform.position = player.position;
@@ -53,9 +63,23 @@ public class FlyingEnemy : MonoBehaviour
             tBA = Time.time + sTBA;
         }
     }
-    IEnumerator FlyUp(){
-        yield return new WaitForSeconds(3f);
-        transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0f, 1f, 0f), 0.2f);
-        
+
+    public void TakeDamage(float damage, bool headShot)
+    {
+        Debug.Log("FFFFFFFFFFFFFFFFFFFFF");
+        Instantiate(bodyBlood, transform.position, Quaternion.identity);
+        health -= damage;
+        if (health <= 0)
+        {
+            StartCoroutine(Destroy(0.1f));
+        }
+    }
+
+    IEnumerator Destroy(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        Destroy(gameObject, 0f);
+        Instantiate(destroyedEffect, transform.position, Quaternion.identity);
+        GlobalStats.Instance.stats["enemyKilled"] ++;
     }
 }

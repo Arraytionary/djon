@@ -35,6 +35,11 @@ public class WalkingEnemy : MonoBehaviour
     {
         //HeadExplode();
         //anim.SetBool("shouldAttack", false);
+        if (transform.position.x < player.position.x)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
         if (Vector2.Distance(transform.position, player.position) > sightDistance)
         {
             anim.SetBool("isDetect", false);
@@ -109,7 +114,7 @@ public class WalkingEnemy : MonoBehaviour
         if(health <= 0)
         {
             if (headShot) HeadExplode();
-            StartCoroutine(Destroy(1.2f));
+            StartCoroutine(Destroy(0.4f));
             
         }
     }
@@ -127,5 +132,6 @@ public class WalkingEnemy : MonoBehaviour
         yield return new WaitForSeconds(sec);
         Destroy(gameObject, 0f);
         Instantiate(destroyedEffect, transform.position, Quaternion.identity);
+        GlobalStats.Instance.stats["enemyKilled"]++;
     }
 }
