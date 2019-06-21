@@ -151,13 +151,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnerLeft: {fileID: 39574723}
   spawnerRight: {fileID: 176680220}
-  walkingEnemy: {fileID: 4210627473608954673, guid: 746d0a28bea09514495a3e887bc83bb5,
+  walkingEnemy: {fileID: 3840827477438638451, guid: 76c634f909cecb546a4676080008efd7,
     type: 3}
-  flyingEnemy: {fileID: 1782208294849011087, guid: df152454ec4fb0843bb1b50f9e740073,
+  flyingEnemy: {fileID: 6198130567858063681, guid: e441e3dfd09b9304b86270bdd15e74f7,
     type: 3}
   spawners: []
   enemyToSpawn: []
-  spawnCoolDown: 5
+  spawnCoolDown: 4
 --- !u!4 &8428586
 Transform:
   m_ObjectHideFlags: 0
@@ -1350,12 +1350,12 @@ PrefabInstance:
     - target: {fileID: 3506199431550766884, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.74
+      value: -8.03
       objectReference: {fileID: 0}
     - target: {fileID: 3506199431550766884, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.92
+      value: -2.57
       objectReference: {fileID: 0}
     - target: {fileID: 3506199431550766884, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
@@ -1405,17 +1405,17 @@ PrefabInstance:
     - target: {fileID: 3506199431550766884, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.620069
+      value: 0.9939707
       objectReference: {fileID: 0}
     - target: {fileID: 3506199431550766884, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.620069
+      value: 0.9939707
       objectReference: {fileID: 0}
     - target: {fileID: 3506199431550766884, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.620069
+      value: 0.9939707
       objectReference: {fileID: 0}
     - target: {fileID: 3506199431550767066, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
@@ -1527,6 +1527,11 @@ PrefabInstance:
       propertyPath: zMul
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3506199430434619947, guid: cb9440e5cba5529429e7744af895f63b,
+        type: 3}
+      propertyPath: startTimeBtwShots
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3506199431479374117, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_Layer
@@ -1565,7 +1570,7 @@ PrefabInstance:
     - target: {fileID: 3506199430434619946, guid: cb9440e5cba5529429e7744af895f63b,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb9440e5cba5529429e7744af895f63b, type: 3}

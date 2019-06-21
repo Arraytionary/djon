@@ -38,6 +38,9 @@ public class Spawner : MonoBehaviour
                 spawnNumber--;
             }
         }
+        else{
+            GlobalStats.LoadStartScene();
+        }
         
     }
 }

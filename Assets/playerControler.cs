@@ -55,6 +55,9 @@ public class playerControler : MonoBehaviour
         // health -= damage;
 
         //anim.Rebind();
+        if(GlobalStats.Instance.stats["health"] <= 0){
+            GlobalStats.LoadDeadScene();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
