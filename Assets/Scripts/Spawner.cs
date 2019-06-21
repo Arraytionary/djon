@@ -38,9 +38,6 @@ public class Spawner : MonoBehaviour
                 spawnNumber--;
             }
         }
-        else{
-            GlobalStats.LoadStartScene();
-        }
-        
+        if (spawnNumber < 7) spawnCoolDown = 0.5f;
     }
 }

@@ -7,7 +7,7 @@ public class GlobalStats : Singleton<GlobalStats>
 {
     public IDictionary<string, float> stats = new Dictionary<string, float>(){
         {"health", 1f},
-        {"enemyToKill", 30},
+        {"enemyToKill", 3},
         {"enemyKilled",0 }
     };
 
@@ -21,6 +21,16 @@ public class GlobalStats : Singleton<GlobalStats>
 
     public static void LoadDeadScene(){
         LoadScene(3);
+    }
+    
+    public static void LoadMainGame()
+    {
+        LoadScene(1);
+    }
+
+    public static void LoadHowTo()
+    {
+        LoadScene(4);
     }
 
     private static void LoadScene(int scene){
