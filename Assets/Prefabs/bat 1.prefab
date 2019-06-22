@@ -78,6 +78,8 @@ MonoBehaviour:
   destroyedEffect: {fileID: 2519766372251214499, guid: 2a7d032af1ef60a40980a202234a657f,
     type: 3}
   fire: {fileID: 4884996427444621039, guid: 4af075bbb06e6aa49961752ee2ddb734, type: 3}
+  explodeSound: {fileID: 8300000, guid: 7060ccd6b9ced744fb6e37c346c15fe4, type: 3}
+  firingSound: {fileID: 8300000, guid: ea588f3da2263404b95e7d208867dbbc, type: 3}
 --- !u!1 &6198130567936305016
 GameObject:
   m_ObjectHideFlags: 0

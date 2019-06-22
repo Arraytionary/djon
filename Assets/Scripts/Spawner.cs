@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
     {
         if (spawnNumber > 0)
         {
-            Debug.Log(Time.time - crrTime);
+            //Debug.Log(Time.time - crrTime);
             if (Time.time - crrTime >= 0)
             {
                 Vector2 spawnPoint = spawners[Random.Range(0, 2)].transform.position;
@@ -38,6 +38,6 @@ public class Spawner : MonoBehaviour
                 spawnNumber--;
             }
         }
-        if (spawnNumber < 7) spawnCoolDown = 0.5f;
+        if (spawnNumber < 4) spawnCoolDown = 0.5f;
     }
 }

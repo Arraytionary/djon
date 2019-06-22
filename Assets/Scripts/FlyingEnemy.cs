@@ -27,6 +27,8 @@ public class FlyingEnemy : MonoBehaviour
     public GameObject destroyedEffect;
 
     public GameObject fire;
+    [SerializeField] AudioClip explodeSound;
+    [SerializeField] AudioClip firingSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,13 +62,14 @@ public class FlyingEnemy : MonoBehaviour
             // transform.rotation = Quaternion.Euler(0f, rotY, zMul * rotZ + offset);
 
             Instantiate(fire, transform.position,Quaternion.Euler(0f, 0f, rotZ + 90f));
+            AudioSource.PlayClipAtPoint(firingSound, transform.position);
             tBA = Time.time + sTBA;
         }
     }
 
     public void TakeDamage(float damage, bool headShot)
     {
-        Debug.Log("FFFFFFFFFFFFFFFFFFFFF");
+        //Debug.Log("FFFFFFFFFFFFFFFFFFFFF");
         Instantiate(bodyBlood, transform.position, Quaternion.identity);
         health -= damage;
         if (health <= 0)
@@ -78,6 +81,7 @@ public class FlyingEnemy : MonoBehaviour
     IEnumerator Destroy(float sec)
     {
         yield return new WaitForSeconds(sec);
+        AudioSource.PlayClipAtPoint(explodeSound, transform.position);
         Destroy(gameObject, 0f);
         Instantiate(destroyedEffect, transform.position, Quaternion.identity);
         GlobalStats.Instance.stats["enemyKilled"] ++;

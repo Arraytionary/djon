@@ -24,10 +24,12 @@ public class WalkingEnemy : MonoBehaviour
     public GameObject bodyBlood;
     public GameObject destroyedEffect;
 
+    [SerializeField] AudioClip explodeSound;
+
     void Start()
     {
         //anim = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;    
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -91,7 +93,7 @@ public class WalkingEnemy : MonoBehaviour
         Collider2D[] inAtkRange = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
         for (int i=0; i< inAtkRange.Length; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             if (inAtkRange[i].CompareTag("Player"))
             {
                 
@@ -130,6 +132,7 @@ public class WalkingEnemy : MonoBehaviour
     IEnumerator Destroy(float sec)
     {
         yield return new WaitForSeconds(sec);
+        AudioSource.PlayClipAtPoint(explodeSound, transform.position);
         Destroy(gameObject, 0f);
         Instantiate(destroyedEffect, transform.position, Quaternion.identity);
         GlobalStats.Instance.stats["enemyKilled"]++;

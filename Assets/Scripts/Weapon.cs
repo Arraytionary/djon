@@ -11,8 +11,16 @@ public class Weapon : MonoBehaviour {
     public Transform shotPoint;
     public Animator camAnim;
 
+    public AudioClip musClip;
+    public AudioSource audSource;
+
     private float timeBtwShots;
     public float startTimeBtwShots;
+
+    private void Start()
+    {
+        audSource.clip = musClip;
+    }
 
     private void Update()
     {
@@ -29,6 +37,8 @@ public class Weapon : MonoBehaviour {
                 camAnim.SetTrigger("shake");
                 Instantiate(projectile, shotPoint.position, transform.rotation);
                 timeBtwShots = startTimeBtwShots;
+
+                audSource.Play();
             }
         }
         else {

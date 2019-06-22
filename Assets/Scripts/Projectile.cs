@@ -2,37 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
-
+public class projectile : MonoBehaviour
+{
     public float speed;
     public float lifeTime;
     public float distance;
-    public int damage;
     public LayerMask whatIsSolid;
-
     public GameObject destroyEffect;
+
+    [SerializeField] AudioClip explodeSound;
+
 
     private void Start()
     {
         Invoke("DestroyProjectile", lifeTime);
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
-        if (hitInfo.collider != null) {
-            if (hitInfo.collider.CompareTag("Enemy")) {
-                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
-            }
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.forward, distance, whatIsSolid);
+        if (hitInfo.collider)
+        {
+            Debug.Log(hitInfo.collider);
             DestroyProjectile();
+
+            if (hitInfo.collider.tag.Equals("Enemy"))
+            {
+
+                hitInfo.collider.GetComponentInParent<WalkingEnemy>().TakeDamage(0.2f, false);
+
+            }
+            else if (hitInfo.collider.tag.Equals("FlyingEnemy"))
+            {
+                hitInfo.collider.GetComponentInParent<FlyingEnemy>().TakeDamage(0.2f, false);
+            }
+            else if (hitInfo.collider.tag.Equals("Head"))
+            {
+                hitInfo.collider.GetComponentInParent<WalkingEnemy>().TakeDamage(0.4f, true);
+            }
         }
-
-
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    void DestroyProjectile() {
+    void DestroyProjectile()
+    {
+        // Debug.Log(transform.position);
+        // Debug.Log(transform.up * 9);
         Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(explodeSound, transform.position);
+        // Instantiate(destroyEffect, transform.position + transform.right * 1.1f, Quaternion.identity); to make explode effect at the same spot as the bullet
+        //Vector3.Scale(transform.position, new Vector3(-2f, 2f, 1f)), Quaternion.identity);
         Destroy(gameObject);
     }
 }
